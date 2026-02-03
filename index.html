@@ -1,31 +1,359 @@
+<meta charset="UTF-8" />
+
 <style>
-    body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        font-family: sans-serif;
-        background: #222;
-        color:#EEE;
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: sans-serif;
+    background: #222;
+    color: #eee;
 
-        font-size: 3em;
-    }
+    font-size: 3em;
+  }
 
-    a {
-        color: #AAF;
-        text-decoration: none;
-    }
+  a {
+    color: #aaf;
+    text-decoration: none;
+  }
+
+  h1 {
+    /* font-family: 'Times New Roman', Times, serif */
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
+
+  h1 #last-name {
+    margin-left: 250px;
+  }
+
+  #dot,
+  .trail {
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: 10%;
+    top: 30%;
+    transition: all 0.05s linear;
+    background-color: #ffffff;
+    width: 20px;
+    height: 20px;
+    margin: -10px;
+    border-radius: 50%;
+    transform-origin: 50% 50%;
+    /* margin: 0; */
+    padding: 0;
+  }
+
+  .box {
+    position: absolute;
+    /* border: 1px solid red; */
+  }
 </style>
 <body>
-<h1>Shafqat Bhuiyan</h1>
-<h3><a href="/rent-vs-buy-calculator/">Sydney - Rent vs Buy calculator</a></h3>
+  <h1>
+    <span id="first-name">Shafqat</span><br /><span id="last-name">
+      Bhuıyan
+      <!-- Bhuiyan -->
+    </span>
+  </h1>
+
+  <div id="dot"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+  <div class="trail"></div>
+
+  <h3>
+    <a href="/rent-vs-buy-calculator/">Sydney - Rent vs Buy calculator</a>
+  </h3>
 </body>
+
 <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Xr es pi Zr rs Kr Qr capture Ni calculateEventProperties os register register_once register_for_session unregister unregister_for_session ds getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty us ns createPersonProfile hs Vr vs opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing ss debug O ls getPageViewId captureTraceFeedback captureTraceMetric qr".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    posthog.init('phc_MdfCGLbsmqjrOpaadHofTFoEQBP4LjFNf1DJ5Kuj2Sz', {
-        api_host: 'https://us.i.posthog.com',
-        defaults: '2025-11-30',
-        person_profiles: 'always',
-    })
+  function createBoxes() {
+    const boxes = [];
+    for (let i = 0; i < 2; i++) {
+      const box = document.createElement("div");
+      box.classList.add("box");
+      document.body.appendChild(box);
+      boxes.push(box);
+    }
+
+    const firstName = document.getElementById("first-name");
+    const lastName = document.getElementById("last-name");
+
+    boxes[0].style.left = firstName.offsetLeft + "px";
+    boxes[0].style.top = firstName.offsetTop + "px";
+    boxes[0].style.width = firstName.offsetWidth + "px";
+    boxes[0].style.height = firstName.offsetHeight + "px";
+    boxes[1].style.left = lastName.offsetLeft + "px";
+    boxes[1].style.top = lastName.offsetTop + 40 + "px";
+    boxes[1].style.width = lastName.offsetWidth + "px";
+    boxes[1].style.height = lastName.offsetHeight - 40 + "px";
+
+    return boxes;
+  }
+
+  const boxes = createBoxes();
+  const dot = document.getElementById("dot");
+  const trails = document.getElementsByClassName("trail");
+  for (let i = 0; i < trails.length; i++) {
+    trails[i].style.transform = `scale(${Math.max(0.5, 1 - i * 0.05)})`;
+    // trails[i].style.opacity = 1 - i * 0.05;
+    trails[i].style.opacity = 0;
+  }
+
+  //   let x = 210;
+  //   let y = 400;
+  //   let x = boxes[0].offsetLeft - 100;
+  //   let y = boxes[0].offsetTop - 200;
+  let x = getLinesForBox(boxes[0])[0].x1 - 110;
+  let y = getLinesForBox(boxes[0])[0].y1 - 100;
+  console.log("Starting ball position:", { x, y });
+  let vx = 4;
+  let vy = -7;
+  let ay = 0.3;
+  let lastTimestamp = 0;
+  let bounces = 0;
+  let frameTime = 1000 / 60;
+  const BOUNCE_LIMIT = 4;
+
+  function runAnimation(timestamp) {
+    animateDot(timestamp);
+  }
+  setInterval(() => {
+    runAnimation();
+  }, frameTime);
+
+  function animateDot(timestamp = 0) {
+    for (let i = trails.length - 1; i >= 1; i--) {
+      trails[i].style.left = trails[i - 1].style.left;
+      trails[i].style.top = trails[i - 1].style.top;
+    }
+    trails[0].style.left = x + "px";
+    trails[0].style.top = y + "px";
+
+    x += (vx * frameTime) / 10;
+    y += (vy * frameTime) / 10;
+    vy += (ay * frameTime) / 10;
+    checkForBounce();
+    // if (y >= 400) {
+    //   vy = -vy;
+    //   applyBounceFriction();
+    //   y = 400;
+    //   bounces++;
+    //   if (bounces >= 4) {
+    //     vy = 0;
+    //   }
+    // }
+    // if (x >= 1000 || x <= 0) {
+    //   vx = -vx;
+    //   x = x >= 1000 ? 1000 : 0;
+    // }
+    dot.style.left = x + "px";
+    dot.style.top = y + "px";
+
+    lastTimestamp = timestamp;
+  }
+
+  function checkForBounce() {
+    const line = findIntersectingLine();
+    if (line) {
+      if (bounces >= BOUNCE_LIMIT - 1) {
+        vx = 0;
+        vy = 0;
+        return;
+      }
+      console.log("Intersected with line:", line);
+      console.log("Ball position and speed:", { x, y, vx, vy });
+
+      applyBounceVelocity(line);
+      moveToPointOfIntersection(line);
+      applyBounceFriction();
+      bounces++;
+    }
+  }
+
+  function moveToPointOfIntersection(line) {
+    const isVerticalLine = line.x1 === line.x2;
+    if (isVerticalLine) {
+      if (vx > 0) {
+        x = line.x1 + 10;
+      } else {
+        x = line.x1 - 10;
+      }
+    } else {
+      if (vy > 0) {
+        y = line.y1 + 10;
+      } else {
+        y = line.y1 - 10;
+      }
+    }
+    // const angle = Math.atan2(line.y2 - line.y1, line.x2 - line.x1);
+    // const ix = line.x1 + Math.cos(angle) * 5;
+    // const iy = line.y1 + Math.sin(angle) * 5;
+    // x = ix;
+    // y = iy;
+  }
+
+  function applyBounceVelocity(line) {
+    const isVertical = line.x1 === line.x2;
+    if (isVertical) {
+      vx = -vx;
+    } else {
+      vy = -vy;
+    }
+    // const angle = Math.atan2(line.y2 - line.y1, line.x2 - line.x1);
+    // const newVx = Math.cos(angle) * vy;
+    // const newVy = Math.sin(angle) * vy;
+    // vx = newVx;
+    // vy = newVy;
+  }
+
+  function applyBounceFriction() {
+    vy = vy * 0.7;
+    vx = vx * 0.7;
+  }
+
+  function findIntersectingLine() {
+    for (let i = 0; i < boxes.length; i++) {
+      const box = boxes[i];
+      const lines = getLinesForBox(box);
+      for (let j = 0; j < lines.length; j++) {
+        const line = lines[j];
+        if (isIntersecting(line, x, y, vx, vy)) {
+          return line;
+        }
+      }
+    }
+    return null;
+  }
+
+  function isIntersecting(line, x, y, vx, vy) {
+    const dx = x - line.x1;
+    const dy = y - line.y1;
+    const dot = dx * (line.x2 - line.x1) + dy * (line.y2 - line.y1);
+    const len2 =
+      (line.x2 - line.x1) * (line.x2 - line.x1) +
+      (line.y2 - line.y1) * (line.y2 - line.y1);
+    const t = dot / len2;
+    if (t < 0 || t > 1) {
+      return false;
+    }
+    const ix = line.x1 + t * (line.x2 - line.x1);
+    const iy = line.y1 + t * (line.y2 - line.y1);
+    const dist = Math.sqrt((ix - x) * (ix - x) + (iy - y) * (iy - y));
+    return dist < 10;
+  }
+
+  function getLinesForBox(box) {
+    const lines = [];
+    lines.push({
+      x1: box.offsetLeft,
+      y1: box.offsetTop,
+      x2: box.offsetLeft + box.offsetWidth,
+      y2: box.offsetTop,
+    });
+    lines.push({
+      x1: box.offsetLeft,
+      y1: box.offsetTop,
+      x2: box.offsetLeft,
+      y2: box.offsetTop + box.offsetHeight,
+    });
+    lines.push({
+      x1: box.offsetLeft + box.offsetWidth,
+      y1: box.offsetTop,
+      x2: box.offsetLeft + box.offsetWidth,
+      y2: box.offsetTop + box.offsetHeight,
+    });
+    lines.push({
+      x1: box.offsetLeft,
+      y1: box.offsetTop + box.offsetHeight,
+      x2: box.offsetLeft + box.offsetWidth,
+      y2: box.offsetTop + box.offsetHeight,
+    });
+    return lines;
+  }
+
+  runAnimation();
+  //   console.log({ lines: getLinesForBox(boxes[0]) });
+  //   console.log({ rect: boxes[0].getBoundingClientRect() });
+</script>
+
+<script>
+  // Posthog embed code
+  !(function (t, e) {
+    var o, n, p, r;
+    e.__SV ||
+      (window.posthog && window.posthog.__loaded) ||
+      ((window.posthog = e),
+      (e._i = []),
+      (e.init = function (i, s, a) {
+        function g(t, e) {
+          var o = e.split(".");
+          (2 == o.length && ((t = t[o[0]]), (e = o[1])),
+            (t[e] = function () {
+              t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+            }));
+        }
+        (((p = t.createElement("script")).type = "text/javascript"),
+          (p.crossOrigin = "anonymous"),
+          (p.async = !0),
+          (p.src =
+            s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") +
+            "/static/array.js"),
+          (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(
+            p,
+            r,
+          ));
+        var u = e;
+        for (
+          void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
+            u.people = u.people || [],
+            u.toString = function (t) {
+              var e = "posthog";
+              return (
+                "posthog" !== a && (e += "." + a),
+                t || (e += " (stub)"),
+                e
+              );
+            },
+            u.people.toString = function () {
+              return u.toString(1) + ".people (stub)";
+            },
+            o =
+              "init Xr es pi Zr rs Kr Qr capture Ni calculateEventProperties os register register_once register_for_session unregister unregister_for_session ds getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty us ns createPersonProfile hs Vr vs opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing ss debug O ls getPageViewId captureTraceFeedback captureTraceMetric qr".split(
+                " ",
+              ),
+            n = 0;
+          n < o.length;
+          n++
+        )
+          g(u, o[n]);
+        e._i.push([i, s, a]);
+      }),
+      (e.__SV = 1));
+  })(document, window.posthog || []);
+  posthog.init("phc_MdfCGLbsmqjrOpaadHofTFoEQBP4LjFNf1DJ5Kuj2Sz", {
+    api_host: "https://us.i.posthog.com",
+    defaults: "2025-11-30",
+    person_profiles: "always",
+  });
 </script>

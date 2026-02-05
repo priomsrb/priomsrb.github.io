@@ -38,25 +38,41 @@
 
   .name-container {
     position: relative;
+    width: 665px;
+    height: 251px;
   }
 
-  .name {
-    top: 50%;
-    left: 50%;
-    color: white;
-  }
-  .collision {
+  .transparent-name {
     position: absolute;
-    display: none;
-    left: 0;
-    top: 0;
-    z-index: -1;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-size: 110px;
+    margin: 0;
+    top: -20px;
+    color: transparent;
+  }
+
+  .transparent-name span {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  .transparent-name :nth-child(3) {
+    margin-left: 2.35em;
+  }
+
+  .nameSvg {
+    color: white;
+    user-select: none;
+    pointer-events: none;
   }
 </style>
 <body>
   <div class="name-container">
-    <img src="./name.svg" class="name" />
+    <img src="./name.svg" class="nameSvg" />
     <div id="canvas-container"></div>
+    <h1 class="transparent-name">
+      <span>Shafqat</span><br /><span>Bhuiyan</span>
+    </h1>
   </div>
 
   <h3>

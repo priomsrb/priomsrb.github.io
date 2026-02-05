@@ -113,7 +113,7 @@
     window.setTimeout(() => Runner.run(runner, engine), 0);
 
     async function createBoxes() {
-      const svg = await fetch("collision.svg");
+      const svg = await fetch("collision.svg", { cache: "force-cache" });
       const svgDom = new DOMParser().parseFromString(
         await svg.text(),
         "image/svg+xml",
@@ -160,7 +160,6 @@
       document.querySelector("canvas").remove();
     };
   };
-
   let deleteSimulation;
   document.addEventListener("DOMContentLoaded", async () => {
     deleteSimulation = await runSimulation();

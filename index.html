@@ -1,12 +1,8 @@
 <meta charset="UTF-8" />
 <meta name="color-scheme" content="dark">
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js"
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js"
   integrity="sha512-6+7rTBmR6pRFe9fa0vCFjFaHZj/XYa7774bEBzRtxgdpIJOS++R3cKd6Prg/eJmxtsJotd8KAg4g57uuVQsZKA=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-  defer
-></script>
+  crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 
 <style>
   body {
@@ -57,6 +53,7 @@
     display: inline-block;
     margin-bottom: 20px;
   }
+
   .transparent-name :nth-child(3) {
     margin-left: 2.35em;
   }
@@ -66,7 +63,20 @@
     user-select: none;
     pointer-events: none;
   }
+
+  ul.site-links {
+    display: flex;
+    gap: 5rem;
+  }
+
+  
+  .projects {
+    font-size: 0.7em;
+  }
+  .projects ul {
+  }
 </style>
+
 <body>
   <div class="name-container">
     <img src="./name.svg" class="nameSvg" />
@@ -76,14 +86,32 @@
     </h1>
   </div>
 
-  <h3>
-    <a href="/rent-vs-buy-calculator/">Sydney - Rent vs Buy calculator</a>
+  <h3 class="projects">
+    Projects:
+    <ul style="margin-left: 50px">
+      <li>
+        <a href="/mac-shortcuts-for-windows/">Mac Shortcuts for Windows</a>
+      </li>
+      <li>
+        <a href="/rent-vs-buy-calculator/">Sydney - Rent vs Buy calculator</a>
+      </li>
+    </ul>
   </h3>
+  <h3>
+    <ul class="site-links">
+      <li>
+        <a href="https://au.linkedin.com/in/shafqat-bhuiyan-21817951">LinkedIn</a>
+      </li>
+      <li>
+        <a href="https://github.com/priomsrb">Github</a>
+      </li>
+    </ul>
+    <h3>
 </body>
 
 <script>
   const runSimulation = async () => {
-    const { Body, Engine, Render, Runner, Bodies, Composite } = Matter;
+    const {Body, Engine, Render, Runner, Bodies, Composite} = Matter;
     var engine = Engine.create();
 
     const nameContainer = document.querySelector(".name-container");
@@ -99,7 +127,7 @@
     });
     Render.lookAt(render, {
       bounds: {
-        min: { x: -200, y: -200 },
+        min: {x: -200, y: -200},
         max: {
           x: nameContainer.clientWidth + 200,
           y: nameContainer.clientHeight + 200,
@@ -108,7 +136,7 @@
     });
 
     var circle = Bodies.circle(170, -50, 8, {
-      render: { fillStyle: "white" },
+      render: {fillStyle: "white"},
     });
     circle.restitution = 0;
     Body.applyForce(
@@ -118,19 +146,19 @@
     );
 
     const boxes = await createBoxes();
-    var ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
+    var ground = Bodies.rectangle(400, 610, 810, 60, {isStatic: true});
 
     // add all of the bodies to the world
     Composite.add(engine.world, [circle, ...boxes, ground]);
 
     Render.run(render);
-    var runner = Runner.create({ delta: 1000 / 120 });
+    var runner = Runner.create({delta: 1000 / 120});
 
     // Added incase we want to delay the start of the animation
     window.setTimeout(() => Runner.run(runner, engine), 0);
 
     async function createBoxes() {
-      const svg = await fetch("collision.svg", { cache: "force-cache" });
+      const svg = await fetch("collision.svg", {cache: "force-cache"});
       const svgDom = new DOMParser().parseFromString(
         await svg.text(),
         "image/svg+xml",
@@ -140,9 +168,9 @@
         // debugger;
         const body = Bodies.rectangle(
           Number(rect.attributes["x"].value) +
-            Number(rect.attributes["width"].value) / 2,
+          Number(rect.attributes["width"].value) / 2,
           Number(rect.attributes["y"].value) +
-            Number(rect.attributes["height"].value) / 2,
+          Number(rect.attributes["height"].value) / 2,
           Number(rect.attributes["width"].value),
           Number(rect.attributes["height"].value),
           {
